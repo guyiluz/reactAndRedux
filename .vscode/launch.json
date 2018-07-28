@@ -1,0 +1,15 @@
+
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3060",
+            "runtimeArgs": ["--disable-web-security"],
+            "webRoot": "${workspaceRoot}/src",
+        }
+    ]
+}

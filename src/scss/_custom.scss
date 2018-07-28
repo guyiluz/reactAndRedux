@@ -1,0 +1,1059 @@
+// Here you can add other styles
+@import url('https://rsms.me/inter/inter-ui.css');
+@import "./oldCoreCss/app.scss";
+// @import './semantic.min.css';
+body{
+font-size: 1.2rem;
+font-family: 'Montserrat'!important;;
+background: #fff !important;
+}
+
+.ui.menu{
+ font-family:'Montserrat'!important;
+}
+
+table{
+    th{
+
+    font-weight: unset;
+    color: #94a0b2;
+
+
+}
+
+}
+
+
+.newProfile{
+
+    display: flex !important;
+    justify-content: space-between!important;
+    font-size: 1.2rem!important;
+    font-family: 'Montserrat'!important;
+
+  
+}
+ 
+button{
+    font-family: 'Montserrat'!important;
+}
+
+label{
+    font-family: 'Montserrat'!important;
+}
+
+
+.table-responsive {
+   
+    overflow-x: unset!important;
+    padding-bottom: 15px!important;
+
+}
+
+.email-app nav {
+    flex: 0 0 250px!important;
+ 
+}
+
+label {
+    font-family: "Inter UI" !important;
+}
+// .ui .mini {
+
+//     margin-top: 1rem!important;
+
+// }
+
+
+
+
+.DevList{
+max-height: 534px  !important;
+overflow-y: scroll!important;
+opacity: 0.95!important;
+
+}
+
+.list{
+  padding-right: 6px!important;
+}
+
+
+
+.DevList-selectAll{
+  display: flex;
+  font-size: 16px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-image: initial;
+  margin-bottom: 8px;
+  padding-top: 4px;
+  background-color: #f7f7f8;
+  height: 44px;
+  align-items: center;
+  padding-left: 10px;
+  background-color: #f7f7f8;
+  border: 1px solid rgba(34,36,38,.15);
+  padding-left: 3;
+
+  
+ 
+
+}
+
+
+.DevList-input{
+  display: flex;
+  font-size: 16px;
+  border-left: none;
+  border-image: initial;
+  margin-bottom: 8px;
+  background-color: #f7f7f8;
+input{
+  border: 1px solid rgba(34,36,38,.15)!important;
+  border-radius: 3px!important;
+
+}
+
+  .ui.input{
+width: 100%!important;
+
+  }
+.ui.input.focus input{
+  background: #f7f7f8!important
+}
+
+
+}
+
+.timeStampList{
+  height: 467 !important;
+  overflow-y: scroll!important;
+  opacity: 0.95!important;
+  padding: 5px;
+  margin-top: 15px;
+  max-width: 230px!important;
+
+  button{
+    box-shadow: none !important;
+    text-align: left!important;
+
+
+  }
+  }
+
+
+ td .text{
+    font-weight: 400!important;
+  line-height: 1.5!important;
+    color: #151b1e!important;
+
+}
+
+.loggin-Box p{
+
+color:#fff
+}
+
+.advancedSerach{
+
+    width:30%!important;
+    padding-bottom:5px!important;
+
+}
+
+.pagetBtn{
+    padding-left: 24px;
+    padding-bottom: 5px;
+    margin-top: -35px;
+
+}
+
+.tableBtn{
+margin-top: 10px!important;
+margin-bottom: 10px!important;
+
+}
+
+
+.geoTableHead th{
+    font-weight: unset;
+    color: #94a0b2;
+    font-size: 1rem!important;
+
+
+    
+}
+
+
+.modalImg{
+    display: flex;
+    flex-wrap: wrap;
+    img{
+        cursor: pointer
+
+    }
+}
+
+.table{
+    background: white!important;
+
+}
+
+.chart_text{
+
+    font-family: inherit !important;
+    font-size: 12px;
+    text-anchor: middle;
+    fill: #ffffff!important;
+
+}
+
+.GoFencesMain a{
+
+    color: #20a8d8!important;
+    cursor: pointer !important;
+
+
+}
+
+
+.GoFencesMain{
+
+    min-height: 80vh;
+
+}
+
+
+.ml-auto {
+margin-right: 24px !important;
+
+
+}
+
+.dropdown-menu .dropdown-menu-right .show{
+
+width: 300px !important;
+
+}
+.chart{
+    .recharts-line{
+        path{
+            stroke:#ffff!important;
+        
+        }
+        
+        
+        }
+
+}
+
+//fleet
+
+// .mb-4{
+//     .tabular{
+//         background: #3da1d8!important;
+//         color: #ffff!important;
+
+//     }
+
+//     .item{
+
+//         color: #fff!important;
+//     }
+
+//     .active{
+//         color: #3da1d8!important;
+
+
+//     }
+
+
+// }
+
+
+
+
+.active-fleet{
+  background: #9FD1EA!important;
+
+
+}
+
+// .fleet-dev-list{
+
+
+
+// }
+
+// ***************************************************************
+.recharts-line-dots{
+
+  circle{
+
+    cursor: zoom-in!important;
+
+  }
+
+}
+
+
+// ***************************************************************
+.recharts-bar-rectangle{
+
+  path{
+
+    cursor: zoom-in!important;
+
+  }
+
+}
+
+
+
+.gm-iv-address{
+
+  display: none!important;
+}
+
+
+
+.gm-style-cc{
+  display: none!important;
+
+}
+
+
+
+
+.fleetEvent{
+  display: flex;
+  border-top: 1px solid #f1f8fc;
+  border-bottom: 1px solid #f1f8fc;
+  padding: 2px;
+  max-width: 219px;
+  opacity: 0.7;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.fleetEventsDate{
+
+
+
+
+}
+
+.fleetEventText{
+  display: flex;
+  font-size: 14;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+
+
+.evetListBox{
+  height: 639px !important;
+  overflow-y: scroll !important;
+  opacity: 0.95 !important;
+}
+
+
+.fleetEventsDate {
+  font-size: 11px!important
+}
+
+.fleetEventActive{
+  color: #3a94ff;
+  display: flex;
+  border-top: 1px solid #f1f8fc;
+  border-bottom: 1px solid #f1f8fc;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: #f7f7f8;
+
+
+
+
+
+}
+
+.historyContiner{
+  min-height: 639px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: stretch;
+  text-align: center;
+
+
+.item{
+  color: black !important;
+}
+
+
+
+
+}
+
+
+// **********************************builder
+.tab___1vAoe{
+  .ui .pointing .menu{
+    box-shadow: none!important;
+
+  }
+
+  .ui.menu .active.item {
+    color: #36bdff!important;
+
+}
+
+  
+  .menu{
+    border-top: none!important;
+    border-left: none!important;
+    border-right: none!important;
+    width: 100%;
+    box-shadow: none!important;
+
+ } 
+
+ .item {
+  border-right: none;
+  border-left: none;
+  border: none;
+  background: none!important;;
+  box-shadow: none;
+
+ }
+ .active .item{
+  color:  #535353!important;
+
+  border: none;
+  background: none!important;;
+  box-shadow: none;
+
+
+ }
+
+ .ui.menu .item:before{
+
+  background: none!important;
+
+
+ }
+
+ .ui.pointing.menu .active.item:after {
+  background-color: #ffffff;
+}
+
+
+}
+
+
+.ui.segment {
+
+  box-shadow: none!important;
+  border:none;
+}
+
+
+// **********************************
+
+
+// ***********************************header___3TAZe
+
+.header___3TAZe{
+.ui.checkbox{
+  font-family: 'Montserrat';
+  font-size: 1rem;
+  font-weight: 300;
+  color: #535353;
+
+}
+
+
+
+
+}
+.continer___2uEe7{
+  table{
+
+    border: none;
+    
+  
+  }
+
+ 
+  .ui.input input, .ui.selection.dropdown {
+    box-shadow: none;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+
+  }
+
+
+
+}
+
+
+// *********************************end header___3TAZe
+
+
+// ***************************************start dataBox___tRD6E
+
+.dataBox___tRD6E{
+  .ui.input input, .ui.selection.dropdown {
+    box-shadow: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+    padding-bottom: 15px;
+  }
+  
+  
+
+}
+
+
+
+// ***************************************end dataBox___tRD6E
+
+
+
+
+.app-body 
+.main {
+
+  background: #f7f7f9!important;
+}
+
+
+.DashboardHeader{
+  .font-2xl{
+
+    color:white;
+  }
+
+
+}
+
+
+
+
+
+
+
+
+.rdt {
+    position: relative;
+  }
+  .rdtPicker {
+    display: none;
+    position: absolute;
+    width: 250px;
+    padding: 4px;
+    margin-top: 1px;
+    z-index: 99999 !important;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    border: 1px solid #f9f9f9;
+  }
+  .rdtOpen .rdtPicker {
+    display: block;
+  }
+  .rdtStatic .rdtPicker {
+    box-shadow: none;
+    position: static;
+  }
+  
+  .rdtPicker .rdtTimeToggle {
+    text-align: center;
+  }
+  
+  .rdtPicker table {
+    width: 100%;
+    margin: 0;
+  }
+  .rdtPicker td,
+  .rdtPicker th {
+    text-align: center;
+    height: 28px;
+  }
+  .rdtPicker td {
+    cursor: pointer;
+  }
+  .rdtPicker td.rdtDay:hover,
+  .rdtPicker td.rdtHour:hover,
+  .rdtPicker td.rdtMinute:hover,
+  .rdtPicker td.rdtSecond:hover,
+  .rdtPicker .rdtTimeToggle:hover {
+    background: #eeeeee;
+    cursor: pointer;
+  }
+  .rdtPicker td.rdtOld,
+  .rdtPicker td.rdtNew {
+    color: #999999;
+  }
+  .rdtPicker td.rdtToday {
+    position: relative;
+  }
+  .rdtPicker td.rdtToday:before {
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid #428bca;
+    border-top-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+  }
+  .rdtPicker td.rdtActive,
+  .rdtPicker td.rdtActive:hover {
+    background-color: #428bca;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
+  .rdtPicker td.rdtActive.rdtToday:before {
+    border-bottom-color: #fff;
+  }
+  .rdtPicker td.rdtDisabled,
+  .rdtPicker td.rdtDisabled:hover {
+    background: none;
+    color: #999999;
+    cursor: not-allowed;
+  }
+  
+  .rdtPicker td span.rdtOld {
+    color: #999999;
+  }
+  .rdtPicker td span.rdtDisabled,
+  .rdtPicker td span.rdtDisabled:hover {
+    background: none;
+    color: #999999;
+    cursor: not-allowed;
+  }
+  .rdtPicker th {
+    border-bottom: 1px solid #f9f9f9;
+  }
+  .rdtPicker .dow {
+    width: 14.2857%;
+    border-bottom: none;
+    cursor: default;
+  }
+  .rdtPicker th.rdtSwitch {
+    width: 100px;
+  }
+  .rdtPicker th.rdtNext,
+  .rdtPicker th.rdtPrev {
+    font-size: 21px;
+    vertical-align: top;
+  }
+  
+  .rdtPrev span,
+  .rdtNext span {
+    display: block;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
+  }
+  
+  .rdtPicker th.rdtDisabled,
+  .rdtPicker th.rdtDisabled:hover {
+    background: none;
+    color: #999999;
+    cursor: not-allowed;
+  }
+  .rdtPicker thead tr:first-child th {
+    cursor: pointer;
+  }
+  .rdtPicker thead tr:first-child th:hover {
+    background: #eeeeee;
+  }
+  
+  .rdtPicker tfoot {
+    border-top: 1px solid #f9f9f9;
+  }
+  
+  .rdtPicker button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .rdtPicker button:hover {
+    background-color: #eee;
+  }
+  
+  .rdtPicker thead button {
+    width: 100%;
+    height: 100%;
+  }
+  
+  td.rdtMonth,
+  td.rdtYear {
+    height: 50px;
+    width: 25%;
+    cursor: pointer;
+  }
+  td.rdtMonth:hover,
+  td.rdtYear:hover {
+    background: #eee;
+  }
+  
+  .rdtCounters {
+    display: inline-block;
+  }
+  
+  .rdtCounters > div {
+    float: left;
+  }
+  
+  .rdtCounter {
+    height: 100px;
+  }
+  
+  .rdtCounter {
+    width: 40px;
+  }
+  
+  .rdtCounterSeparator {
+    line-height: 100px;
+  }
+  
+  .rdtCounter .rdtBtn {
+    height: 40%;
+    line-height: 40px;
+    cursor: pointer;
+    display: block;
+  
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
+  }
+  .rdtCounter .rdtBtn:hover {
+    background: #eee;
+  }
+  .rdtCounter .rdtCount {
+    height: 20%;
+    font-size: 1.2em;
+  }
+  
+  .rdtMilli {
+    vertical-align: middle;
+    padding-left: 8px;
+    width: 48px;
+  }
+  
+  .rdtMilli input {
+    width: 100%;
+    font-size: 1.2em;
+    margin-top: 37px;
+  }
+  
+  .rdtTime td {
+    cursor: default;
+  }
+
+
+  // map history info window 
+
+
+  .gm-style-iw{
+
+    display: flex!important;
+    justify-content: center!important;
+  }
+
+  .hoverli:hover{
+
+    color: #1F86AC!important;
+    font-weight: 700;
+
+
+  }
+
+  .gmnoprint{
+svg{
+
+  display: none
+}
+
+  }
+
+
+
+
+
+  .react-confirm-alert-blur {
+    filter: url(#gaussian-blur);
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+  }
+  
+  .react-confirm-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: rgba(255, 255, 255, 0.9);
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    -ms-align-items: center;
+    align-items: center;
+    opacity: 0;
+    -webkit-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
+    -moz-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
+    -o-animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
+    animation: react-confirm-alert-fadeIn 0.5s 0.2s forwards;
+  }
+  
+  .react-confirm-alert {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 400px;
+    padding: 30px;
+    text-align: left;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 75px rgba(0, 0, 0, 0.13);
+    color: #666;
+  }
+  
+  .react-confirm-alert-svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .react-confirm-alert > h1 {
+    margin-top: 0;
+  }
+  
+  .react-confirm-alert > h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .react-confirm-alert-button-group {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+  
+  .react-confirm-alert-button-group > button {
+    outline: none;
+    background: #333;
+    border: none;
+    display: inline-block;
+    padding: 6px 18px;
+    color: #eee;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  @-webkit-keyframes react-confirm-alert-fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @-moz-keyframes react-confirm-alert-fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @-o-keyframes react-confirm-alert-fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes react-confirm-alert-fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  // **************************************************************logoutCheckBox Start
+
+.react-confirm-alert-overlay{
+  .ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before {
+    background: #bb101087 !important;
+  }
+
+}
+
+
+
+ 
+
+  // **************************************************************logoutCheckBox End
+    // **************************************************************logoutCheckBox start
+    .Device_Dashboard, .accoutnDash{
+      
+ 
+  .card-body, .dashBordMap{
+    border: none!important;
+    box-shadow: rgba(68, 77, 88, 0.11) 0px 4px 15px 0px;
+  }
+
+
+  .notifationBox{
+margin-bottom: 15px
+
+  }
+
+.table{
+
+  box-shadow: rgba(68, 77, 88, 0.11) 0px 4px 15px 0px;
+
+}
+    }
+
+
+
+
+  // **************************************************************logoutCheckBox End
+// ************************************scroll bar feet Remoove
+
+.timeLineDiv::-webkit-scrollbar { 
+  display: none; 
+}
+
+.GmapSafeZ{
+  .leaflet-container {
+    height: 400px;
+    width: 100%;
+}
+
+
+}
+
+
+.fleetMap{
+  .leaflet-container {
+    height: 650px;
+    width: 100%;
+}
+
+}
+
+// @media only screen and (max-width: 700px) {
+  
+
+//   .box___1fK89 {
+//       width: 100%;
+//   }
+// }
+
+
+// SideBarContiner 
+.SideBarContiner{
+  max-width: 258px;
+
+  .attached{
+border-bottom: none!important;
+
+  }
+.ui.tabular.menu{
+
+  font-size: 13px !important;
+  .item{
+    background: #fdfdfd!important;
+
+  }
+}
+
+}
+
+// SideBarContiner  end 
+// FleetHistoryConroller 
+.FleetHistoryConroller{
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: center;
+margin-top: 15px;
+.FleetHistoryConroller-silder{
+
+  display: flex;
+  flex-direction: column;
+  p{
+    padding: 0;
+    margin-bottom: -20px;
+    font-size: 13px;
+    font-weight: 300;
+    color: #676981;
+    margin-top: 15px;
+    
+  }
+ 
+}
+
+.slider.slider-horizontal{
+  width: 104px;
+
+  // #979797, 1
+
+}
+
+.slider-handle{
+  background-image: linear-gradient(to bottom,  #ebebed 0%,  #ebebed 100%);
+
+}
+
+.play {
+  margin-bottom: -15px;
+  padding: 10px;
+  border: 1px solid #f1ecec;
+  border-radius: 2px;
+  width: 2.18em !important;
+  height: auto!important;
+  box-shadow: 0px 2px 7px 5px rgba(134, 134, 134, 0.06);
+}
+
+}
+.FleetHistoryConroller-silder{
+
+
+}
+
+// End=> FleetHistoryConroller 
