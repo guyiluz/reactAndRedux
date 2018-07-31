@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Switch, Route, Redirect, HashRouter} from 'react-router-dom';
 import {Container} from 'reactstrap';
-import Loggin from "./Loggin"
 import {connect} from "react-redux";
-
+import TImerContiner from './TImerContiner'
 
 
 
@@ -34,15 +33,8 @@ class Full extends Component {
       <div className="app">
         <div className="app-body">
           <main className="main">
-          Boilder Ptale
-            {/* <Container fluid>
-              <Switch>
-              <Route path='/' component={Loggin}/>
-
-              </Switch>
-        
-
-            </Container> */}
+      <TImerContiner/>
+       
             
           </main>
         </div>

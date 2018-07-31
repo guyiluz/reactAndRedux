@@ -18,6 +18,7 @@ export default function Root ({
     );
 }
 
+
 Root.propTypes = {
     store: PropTypes.object
 };
