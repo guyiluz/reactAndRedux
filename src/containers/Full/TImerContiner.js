@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Button } from '../../../node_modules/antd';
 
+import ReactTable from "react-table";
 
 class TImerContiner extends Component {
   constructor(props){
@@ -11,65 +12,46 @@ class TImerContiner extends Component {
    mSmall:0,
    sBig:0,
    sSmall:0,
-   mouseEtner:false
+   isMouseUp:false
+
+   
 
 
     }
   }
 
 
-  up=()=>{
-    this.setState({mouseEtner:true})
+   changeSec= ()=>{
 
-    const add=()=>{
-
-      setTimeout(()=>{     
-        
- 
-    
+  
     let {mBig,mSmall,sBig,sSmall}=this.state
-  let  mBigNromlise=mBig!==0?mBig*10*60*1000:0
-  let  mSmallNromlise=mSmall!==0?mSmall*60*1000:0
-  let sBigNromlise=sBig!==0?sBig*10*1000:0
-  let sSmallNromlise=sSmall!==0?sSmall*1000:0;
-  sSmallNromlise+=1000
- let  millis=  mBigNromlise+mSmallNromlise+sBigNromlise+sSmallNromlise
- var minutes = Math.floor(millis / 60000);
- var seconds = ((millis % 60000) / 1000).toFixed(0);
-let stringTime=  minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-if(stringTime.length<5){
-stringTime = "0"+stringTime
-console.log('stringTime :', stringTime);
+    let  mBigNromlise=mBig!==0?mBig*10*60*1000:0
+    let  mSmallNromlise=mSmall!==0?mSmall*60*1000:0
+    let sBigNromlise=sBig!==0?sBig*10*1000:0
+    let sSmallNromlise=sSmall!==0?sSmall*1000:0;
+    sSmallNromlise+=1000
+   let  millis=  mBigNromlise+mSmallNromlise+sBigNromlise+sSmallNromlise
+   var minutes = Math.floor(millis / 60000);
+   var seconds = ((millis % 60000) / 1000).toFixed(0);
+  let stringTime=  minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  if(stringTime.length<5){
+  stringTime = "0"+stringTime
 
+  }
+  
+  
+  this.setState({
+    mBig:Number(stringTime[0]),
+    mSmall:Number(stringTime[1]),
+    sBig:Number(stringTime[3]),
+    sSmall:Number(stringTime[4]),
+
+  }) 
+ 
 }
 
 
 
-
-this.setState({
-  mBig:Number(stringTime[0]),
-  mSmall:Number(stringTime[1]),
-  sBig:Number(stringTime[3]),
-  sSmall:Number(stringTime[4])
-
-
-
-
-})
-
-if(this.state.mouseEtner){
-  add()
-
-}
-
-
-
-// end of add 
-},50)
-}
-
-
-}
 
 
 
@@ -86,7 +68,7 @@ if(this.state.mouseEtner){
        let stringTime=  minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
  if(stringTime.length<5){
   stringTime = "0"+stringTime
-console.log('stringTime :', stringTime);
+
  }
 
 
@@ -120,12 +102,22 @@ console.log('stringTime :', stringTime);
 console.log('millis :', millis);
 
   }
+  
 
+  
 
-  componentDidMount(){
- 
-    
-  }
+  handelDown=()=>{
+
+    const intervalTIme =this.state.intervalTIme
+
+    let intervalId = setInterval(this.changeSec, 200)
+    this.setState({ intervalId: intervalId })
+
+}
+handelUp=()=>{
+    clearInterval(this.state.intervalId)
+   
+}
 
 
 
@@ -147,14 +139,23 @@ const testStyle={
 }
 
 
+
+
+
+
+
+
     return (
  
 
 
           <main  style={testStyle} className="main">
   
+
+
+  
 <button onClick={this.HandleStartTimer}>CLick</button>
-<button onClick={this.up}>up</button>
+<button  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick}>up</button>
   {mBig}{mSmall}:{sBig}{sSmall}
           </main>
     
@@ -170,3 +171,10 @@ const testStyle={
 export default TImerContiner
 
 
+
+
+
+  
+
+   
+   

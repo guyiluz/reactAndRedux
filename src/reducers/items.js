@@ -1,11 +1,4 @@
 
-export * from "./device_rdeucers"
-
-
-
-
-
-
 
 
 
@@ -33,7 +26,8 @@ export function deviceLoc(state = []
         firstName:"",
         lastLogin:"",
         notificationCount:"0",
-        userManu:""
+        userManu:"",
+        userEamil:""
 
     
     }, action) {
@@ -46,9 +40,8 @@ export function deviceLoc(state = []
                     firstName:action.payload.firstName,
                     lastLogin:action.payload.lastLogin,
                     notificationCount:action.payload.notificationCount,
-                    userManu:action.payload.userManu
-
-      
+                    userManu:action.payload.userManu,
+                    userEamil:action.payload.userEamil,      
          
              
                 };

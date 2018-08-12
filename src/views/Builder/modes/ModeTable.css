@@ -1,0 +1,63 @@
+.dataBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.continer{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    box-shadow: -1px 3px 115px -42px rgba(0,0,0,0.35);
+    display: flex;
+    flex-wrap: wrap;
+    font-family:Montserrat;
+    font-size:14px;
+    text-transform: lowercase;
+    
+
+
+
+}  
+
+.btnDiv{
+
+    display: flex;
+    justify-content: flex-end;
+    padding: 34px;
+
+}
+
+.header{
+
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: #535353;
+    font-weight: 900;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
+a{
+
+cursor: pointer;
+
+}
+
+
+.noTopBorder td{
+    border-top: none!important;
+    
+    }
+
+    .active{
+        box-shadow: -1px 3px 115px -42px rgba(0,0,0,0.35);
+
+    }
+
+
+
+

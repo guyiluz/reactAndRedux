@@ -1,11 +1,10 @@
 import React from 'react';
-import Full from "../containers/Full/Full"
-
+import Timer from "../containers/Timer"
 
 const App = (props) => {
     return (
         <div>
-            <Full/>
+     <Timer/>
         </div>
     )
 }

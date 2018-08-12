@@ -1,0 +1,89 @@
+.dataBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 33.33%;
+    padding-left: 3%;
+    padding-right: 3%;
+
+
+}
+
+.continer{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    box-shadow: -1px 3px 115px -42px rgba(0,0,0,0.35);
+    display: flex;
+    flex-wrap: wrap;
+    font-family:Montserrat;
+    font-size:14px;
+    padding: 22px 0px 19px 0px;
+
+
+
+}  
+
+.btnDiv{
+
+    display: flex;
+    justify-content: flex-end;
+    padding: 34px;
+
+}
+
+.header{
+
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: #535353;
+    font-weight: 900;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
+
+.nameOfMode{
+
+color: #2185d0;
+
+}
+
+@media (min-width: 1030px) and (max-width: 1500px) {
+    .dataBox{
+ width: 50%
+    
+    }
+
+
+
+
+
+}
+
+
+
+@media (min-width: 700px) and (max-width: 1030px) {
+    .dataBox{
+ width: 100%
+    
+    }
+
+
+
+
+
+}
+
+
+
+@media only screen and (max-width: 600px) {
+        .dataBox{
+ width: 100%
+    
+
+ 
+    }
+}

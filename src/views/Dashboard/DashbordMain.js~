@@ -1,0 +1,166 @@
+import React from 'react'
+import TimeAgo from 'react-timeago'
+
+
+import {PieChart} from 'react-easy-chart';
+import {
+  Badge,
+  Row,
+  Col,
+  Progress,
+  Table
+} from 'reactstrap';
+
+import { Button,List,Icon,Header } from 'semantic-ui-react'
+
+import   {ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from  "recharts";
+
+
+
+export class DashbordMain extends React.Component {
+
+handleLineChartChange=(e)=>{
+ 
+  this.props.handleLineChart(e.currentTarget.name);
+
+
+
+}
+
+  render() {
+
+
+    const option ={
+      strokeWidth:2,
+      type:"monotone",
+      dot:false}
+
+
+    const {chartData,dashboardNotifications,topNot} =this.props
+
+   const topNotif =topNot.map((item)=>{
+
+return <List.Item>
+<List.Icon name='trophy' size='large' verticalAlign='middle' />
+<List.Content>
+ <List.Header as='a'>{item.key}: {item.value}</List.Header>
+</List.Content>
+</List.Item>
+
+
+    })
+
+
+const notifactionList = dashboardNotifications
+.map((note=>{
+
+return (
+
+<List.Item>
+<List.Icon name='alarm outline' size='large' verticalAlign='middle' />
+<List.Content>
+ <List.Header as='a'>{note.notificationText}</List.Header>
+  <List.Description as='a'><TimeAgo date={note.createdDate*1000}   /></List.Description>
+</List.Content>
+</List.Item>
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
+}))
+    return (
+
+
+
+       <Row>
+          <Col xs="12" sm="6" lg="3">
+<div>
+          <Header textAlign="center" size='small'> Profile per Devices </Header>
+
+          <PieChart
+             labels
+             size={350}
+             innerHoleSize={100}
+    data={this.props.paiData}
+    styles={{
+      '.chart_lines': {
+        strokeWidth: 0
+      },
+      '.chart_text': {
+        fontFamily: 'serif',
+        fontSize: '1.25em',
+        fill: '#333'
+      }
+    }}
+
+  />
+</div>
+
+
+
+          </Col>
+
+          <Col xs="12" sm="6" lg="3">
+<div> 
+<Header textAlign="center" size='small'> Calls to server</Header>
+
+<Button.Group  >
+    <Button  onClick={this.handleLineChartChange}  name="daily">Daily</Button>
+    <Button  onClick={this.handleLineChartChange}  name="weekly">Weekly</Button>
+
+    <Button onClick={this.handleLineChartChange} name="monthly" >Monthly </Button>
+  </Button.Group></div>
+ <div style={{    height: "80%"}}> 
+          <ResponsiveContainer >
+
+          <LineChart reverseStackOrder={true} data={chartData[this.props.chartParam]} >
+
+  <XAxis dataKey="key" />
+
+  <Tooltip />
+  <Line type="monotone"  stroke="#0093ee"  {...option} dataKey="value" stroke="#8884d8" />
+</LineChart>
+
+ </ResponsiveContainer> 
+ </div>
+          </Col>
+
+          <Col xs="12" sm="6" lg="3">
+
+      <Header textAlign="center" size='small'>Notifications</Header>
+
+
+          <List divided relaxed>
+{notifactionList}
+
+</List>
+          </Col>
+          <Col xs="12" sm="6" lg="3">
+          <Header textAlign="center" size='small'> Top Notifications</Header>
+
+          <List divided relaxed>
+             {topNotif}
+
+ 
+             </List>
+
+      </Col>
+
+
+
+        </Row>
+    )
+}
+
+}
+export default DashbordMain

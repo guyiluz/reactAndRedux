@@ -18,13 +18,17 @@
     justify-content: unset;
     background-color: #26374c;
     flex-direction: column;
-   
+    img{
+
+
+        margin-top: 66px;
+        margin-bottom: 37px;
+    }
 
     form{
 
         display: flex;
         flex-direction: column;
-        margin-top: 106px;
     }
 
 input{
