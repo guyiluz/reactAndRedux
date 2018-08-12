@@ -7,7 +7,7 @@
             "name": "chrome",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:3060",
+            "url": "http://localhost:4060",
             "runtimeArgs": ["--disable-web-security"],
             "webRoot": "${workspaceRoot}/src",
         }

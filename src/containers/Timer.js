@@ -10,9 +10,11 @@ class Timer extends Component {
    mSmall:0,
    sBig:0,
    sSmall:0,
-   isMouseUp:false
+   isMouseUp:false,
+   arrowBtn:""
 
    
+
 
 
     }
@@ -20,14 +22,31 @@ class Timer extends Component {
 
 
    changeSec= ()=>{
-
+  
+    
   
     let {mBig,mSmall,sBig,sSmall}=this.state
     let  mBigNromlise=mBig!==0?mBig*10*60*1000:0
     let  mSmallNromlise=mSmall!==0?mSmall*60*1000:0
     let sBigNromlise=sBig!==0?sBig*10*1000:0
     let sSmallNromlise=sSmall!==0?sSmall*1000:0;
-    sSmallNromlise+=1000
+
+    switch (this.state.arrowBtn) {
+      case "sBigNromlise":
+      sBigNromlise+=1000*10
+        break;
+    
+        case "mSmallNromlise":
+        mSmallNromlise+=60*1000
+          break;
+      default:
+        break;
+    }
+
+
+
+
+
    let  millis=  mBigNromlise+mSmallNromlise+sBigNromlise+sSmallNromlise
    var minutes = Math.floor(millis / 60000);
    var seconds = ((millis % 60000) / 1000).toFixed(0);
@@ -49,10 +68,7 @@ class Timer extends Component {
 }
 
 
-handleClick=()=>{
 
-    this.changeSec()
-}
 
 
 
@@ -104,16 +120,42 @@ console.log('millis :', millis);
 
   }
   
-  handelDown=()=>{
 
-    const intervalTIme =this.state.intervalTIme
 
-    let intervalId = setInterval(this.changeSec, 200)
-    this.setState({ intervalId: intervalId })
 
-}
+  
+handleClick=(e)=>{
+  this.setState({
+    arrowBtn:e.target.id
+ 
+  } ,()=>this.changeSec()
+ )
+ }
+  
+  handelDown=(e)=>{
+
+    this.setState({
+      arrowBtn:e.target.id
+   
+    } ,()=> {
+      const intervalTIme =this.state.intervalTIme
+
+      let intervalId = setInterval(this.changeSec, 300)
+      this.setState({ intervalId: intervalId })
+  
+
+
+    })
+   
+   }
+  
+
 handelUp=()=>{
+
+  this.setState({arrowBtn:""},()=>{
     clearInterval(this.state.intervalId)
+  })
+
    
 }
 
@@ -191,17 +233,22 @@ const imgStyles={
  
  <div style={timerStyle}>
 <div> 
-<img style={{    transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+<img  id="mSmallNromlise"  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick} style={{    transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
 
 <div>{mBig}</div>
+
+<img  id="mSmallNromlise"  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick} style={{    transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+
 </div>
 <div style={NumberStyles} > {mSmall}</div>
 <div style={NumberStyles} > :</div>
 
 <div> 
-<img  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick} style={{    transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+<img   id ="sBigNromlise" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick} style={{    transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
 
 <div>{sBig}</div>
+<img   id ="sBigNromlise" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick} style={{    transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+
 </div>
 <div style={NumberStyles}>{sSmall}</div>
 
