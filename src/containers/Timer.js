@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import CheckboxGroup from '../../node_modules/antd/lib/checkbox/Group';
 
 
 class Timer extends Component {
@@ -11,8 +12,10 @@ class Timer extends Component {
    sBig:0,
    sSmall:0,
    isMouseUp:false,
-   arrowBtn:""
+   arrowBtn:"",
+   counter:0
 
+  
    
 
 
@@ -21,17 +24,19 @@ class Timer extends Component {
   }
 
 
+
    changeSec= ()=>{
-  
+
     
-  
-    let {mBig,mSmall,sBig,sSmall}=this.state
+
+
+    let {mBig,mSmall,sBig,sSmall,counter}=this.state
     let  mBigNromlise=mBig!==0?mBig*10*60*1000:0
     let  mSmallNromlise=mSmall!==0?mSmall*60*1000:0
     let sBigNromlise=sBig!==0?sBig*10*1000:0
     let sSmallNromlise=sSmall!==0?sSmall*1000:0;
-
-    switch (this.state.arrowBtn) {
+let   arrowBtn =this.state.arrowBtn
+    switch (arrowBtn) {
       case "sBigNromlise":
       sBigNromlise+=1000*10
         break;
@@ -39,6 +44,22 @@ class Timer extends Component {
         case "mSmallNromlise":
         mSmallNromlise+=60*1000
           break;
+          case "sBigNromliseLess":
+
+          if(mBig+mSmall+sBig+sSmall!==0){
+            sBigNromlise-=1000*10
+          }
+          break;
+          case "mSmallNromliseLess":
+
+          if(mBig+mSmall+sBig+sSmall!==0){
+            mSmallNromlise-=60*1000
+          }
+     
+     
+            break;
+
+
       default:
         break;
     }
@@ -56,14 +77,18 @@ class Timer extends Component {
 
   }
   
+  if(arrowBtn!==""){
+    this.setState({
+      mBig:Number(stringTime[0]),
+      mSmall:Number(stringTime[1]),
+      sBig:Number(stringTime[3]),
+      sSmall:Number(stringTime[4]),
+      counter:counter+=1
   
-  this.setState({
-    mBig:Number(stringTime[0]),
-    mSmall:Number(stringTime[1]),
-    sBig:Number(stringTime[3]),
-    sSmall:Number(stringTime[4]),
+    }) 
+  }
+  
 
-  }) 
  
 }
 
@@ -125,38 +150,74 @@ console.log('millis :', millis);
 
   
 handleClick=(e)=>{
-  this.setState({
-    arrowBtn:e.target.id
- 
-  } ,()=>this.changeSec()
- )
+
+
+
  }
   
   handelDown=(e)=>{
+ 
+ 
 
-    this.setState({
-      arrowBtn:e.target.id
-   
-    } ,()=> {
-      const intervalTIme =this.state.intervalTIme
-
-      let intervalId = setInterval(this.changeSec, 300)
-      this.setState({ intervalId: intervalId })
+     if(e.type=="mousedown"){
+     console.log("down");
+      this.setState({
+        arrowBtn:e.target.id,
+        stop:true
+     
+      } ,()=> {
+        const intervalTIme =this.state.intervalTIme
   
-
-
-    })
+        let intervalId = setInterval(this.changeSec, 150)
+        this.setState({ intervalId: intervalId,evType:"mousedown"})
+    
+  
    
+      })
+   }
+   
+   else  {
+    console.log(e.type)
+    this.setState({
+      arrowBtn:e.target.id,
+    evType:""
+    } ,()=>this.changeSec()
+   )
+
+
+
+
+
+  
+  }
+
+
+    
    }
   
 
 handelUp=()=>{
+  console.log("Up")
 
-  this.setState({arrowBtn:""},()=>{
+
+  clearInterval(this.state.intervalId)
+  this.setState({arrowBtn:"",evType:""},()=>{
     clearInterval(this.state.intervalId)
   })
 
    
+}
+
+handeClickCapture=(e)=>{
+  const {counter}=this.state
+  console.log("handeClickCapture");
+  if(counter>1){
+e.stopPropagation()
+this.setState({counter:0})
+
+  }else{
+    this.setState({counter:0})
+  }
 }
 
 
@@ -193,7 +254,7 @@ const timerStyle={
 }
 
 const NumberStyles={
-    alignSelf: "flex-end"
+    alignSelf: "center"
 
 }
 const imgStyles={
@@ -201,6 +262,13 @@ const imgStyles={
 
 
 }
+const imgStylesDown={
+  marginTop: "-275px"
+
+
+
+}
+
 
 
     return (
@@ -232,22 +300,21 @@ const imgStyles={
 
  
  <div style={timerStyle}>
-<div> 
-<img  id="mSmallNromlise"  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick} style={{    transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+<div onClickCapture={this.handeClickCapture}> 
+<img  id="mSmallNromlise" onClick={this.handelDown} onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp}  style={{paddingRight: "39px",transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
 
 <div>{mBig}</div>
 
-<img  id="mSmallNromlise"  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick} style={{    transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+<img  id="mSmallNromliseLess"  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{ paddingLeft: "39px"  ,...imgStylesDown}} src={require('./path.svg')} />
 
 </div>
 <div style={NumberStyles} > {mSmall}</div>
 <div style={NumberStyles} > :</div>
-
-<div> 
-<img   id ="sBigNromlise" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick} style={{    transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+<div onClickCapture={this.handeClickCapture}> 
+<img   id ="sBigNromlise" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{paddingRight: "39px",transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
 
 <div>{sBig}</div>
-<img   id ="sBigNromlise" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick} style={{    transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+<img   id ="sBigNromliseLess" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{ paddingLeft: "39px"  ,...imgStylesDown}} src={require('./path.svg')} />
 
 </div>
 <div style={NumberStyles}>{sSmall}</div>
