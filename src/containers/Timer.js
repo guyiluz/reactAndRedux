@@ -1,19 +1,24 @@
 import React, {Component} from 'react';
 import CheckboxGroup from '../../node_modules/antd/lib/checkbox/Group';
+import {connect} from "react-redux";
+import {SET_TIMER} from "../actions/items"
 
 
 class Timer extends Component {
   constructor(props){
   
     super(props)
+    const timer =this.props.timer
+    const time= this.props.timers[timer]
     this.state={
-   mBig:0,
-   mSmall:0,
-   sBig:0,
-   sSmall:0,
+   mBig:parseInt(time[0]) ,
+   mSmall:parseInt(time[1]),
+   sBig:parseInt(time[3]),
+   sSmall:parseInt(time[4]),
    isMouseUp:false,
    arrowBtn:"",
-   counter:0
+   counter:0,
+   totalTime:0
 
   
    
@@ -77,13 +82,20 @@ let   arrowBtn =this.state.arrowBtn
 
   }
   
+  const obj = this.props.timers
+  obj[this.props.timer]=stringTime
+  this.props.SET_TIMER(obj)
+    
+console.log(stringTime);
+
   if(arrowBtn!==""){
     this.setState({
       mBig:Number(stringTime[0]),
       mSmall:Number(stringTime[1]),
       sBig:Number(stringTime[3]),
       sSmall:Number(stringTime[4]),
-      counter:counter+=1
+      counter:counter+=1,
+      totalTime:stringTime
   
     }) 
   }
@@ -160,6 +172,7 @@ handleClick=(e)=>{
  
 
      if(e.type=="mousedown"){
+       
      console.log("down");
       this.setState({
         arrowBtn:e.target.id,
@@ -168,7 +181,7 @@ handleClick=(e)=>{
       } ,()=> {
         const intervalTIme =this.state.intervalTIme
   
-        let intervalId = setInterval(this.changeSec, 150)
+        let intervalId = setInterval(this.changeSec, 200)
         this.setState({ intervalId: intervalId,evType:"mousedown"})
     
   
@@ -197,15 +210,14 @@ handleClick=(e)=>{
   
 
 handelUp=()=>{
-  console.log("Up")
-
 
   clearInterval(this.state.intervalId)
   this.setState({arrowBtn:"",evType:""},()=>{
     clearInterval(this.state.intervalId)
   })
 
-   
+  console.log("Up")
+
 }
 
 handeClickCapture=(e)=>{
@@ -334,10 +346,28 @@ const imgStylesDown={
 
 
 
+const mapStateToProps = (state) => {
+  return {
+    timers:state.timers      
+
+
+  };
+};
 
 
 
-export default Timer
+const mapDispatchToProps = (dispatch) => {
+  return {
+    SET_TIMER:(obj)=>dispatch(SET_TIMER(obj))
+
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timer);
+
+
+
 
 
 
