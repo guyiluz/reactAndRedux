@@ -14,3 +14,15 @@
    
 
     
+
+
+        export function SET_TIMER_NAME(string){
+            return{
+                type:"TIMENAME",
+                payload:string
+                
+            }
+
+        }
+    
+   

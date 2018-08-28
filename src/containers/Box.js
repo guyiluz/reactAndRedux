@@ -2,7 +2,7 @@ import React from 'react';
 
     const Box =(props)=>{
 
-        const {time,header} =props
+        const {time,header,id,handleTimerObj} =props
         const BoxStyle ={
           fontFamily: "'Source Sans Pro'",
           height: "119px",
@@ -37,7 +37,7 @@ import React from 'react';
             
   
         return(
-  <div style={BoxStyle} >
+  <div  id={id} onClick={handleTimerObj} style={BoxStyle} >
   <header style={headerStyle}>
   {header}
   

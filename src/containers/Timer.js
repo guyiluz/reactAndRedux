@@ -8,8 +8,8 @@ class Timer extends Component {
   constructor(props){
   
     super(props)
-    const timer =this.props.timer
-    const time= this.props.timers[timer]
+    const timerName =this.props.timerName
+    const time= this.props.timers[timerName]
     this.state={
    mBig:parseInt(time[0]) ,
    mSmall:parseInt(time[1]),
@@ -18,7 +18,8 @@ class Timer extends Component {
    isMouseUp:false,
    arrowBtn:"",
    counter:0,
-   totalTime:0
+   totalTime:0,
+   timerName:timerName
 
   
    
@@ -27,6 +28,41 @@ class Timer extends Component {
 
     }
   }
+
+  static getDerivedStateFromProps(nextProps,prevState){
+    console.log("nextProps:",nextProps)
+    console.log("prevState:",prevState)
+ if(prevState.timerName!==nextProps.timerName&&prevState.timerName!==undefined){
+
+  const timerName =nextProps.timerName
+    const time= nextProps.timers[timerName]
+
+return{
+
+   
+   mBig:parseInt(time[0]) ,
+   mSmall:parseInt(time[1]),
+   sBig:parseInt(time[3]),
+   sSmall:parseInt(time[4]),
+   isMouseUp:false,
+   arrowBtn:"",
+   counter:0,
+   totalTime:0,
+   timerName
+
+
+
+}
+
+
+ }else{
+
+return null
+
+ }
+
+
+   }
 
 
 
@@ -83,7 +119,7 @@ let   arrowBtn =this.state.arrowBtn
   }
   
   const obj = this.props.timers
-  obj[this.props.timer]=stringTime
+  obj[this.props.timerName]=stringTime
   this.props.SET_TIMER(obj)
     
 console.log(stringTime);
@@ -348,7 +384,8 @@ const imgStylesDown={
 
 const mapStateToProps = (state) => {
   return {
-    timers:state.timers      
+    timers:state.timers,
+    timerName:state.timerName      
 
 
   };

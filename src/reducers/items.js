@@ -1,4 +1,17 @@
+export function timerName(state="prepare",action) {
+    
+switch(action.type){
 
+case "TIMENAME":
+return  action.payload
+ 
+default:
+return state;
+
+}
+
+
+}
 
 
     
