@@ -13,13 +13,21 @@ constructor(props) {
 
 
 
-
   render() {
 
- 
+    const continerStyle ={
+
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      height:"100%",
+      justifyContent: "center"
+
+
+    }
     return (
     
-          <div>
+          <div style ={continerStyle}>
      <Timer    />
      <TimersBoxes   />
         </div>

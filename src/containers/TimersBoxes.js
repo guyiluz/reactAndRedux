@@ -13,22 +13,29 @@ class TimersBoxes extends Component {
 
 
   render() {
-const {interval,medation,prepare}=this.props.timers
+
+    const boxCountinerStyle ={
+      display: "flex"
+
+
+    }
+const {interval,medation,prepare,timerName }=this.props.timers
 
 
 
     return (
-      <div className="boxCountiner">
-       <Box handleTimerObj={this.handleTimerObj}  id={"prepare"} header={"Get ready"} time={prepare}/>
-       <Box handleTimerObj={this.handleTimerObj}   id={"medation"} header={"medation"} time={medation}/>
-       <Box handleTimerObj={this.handleTimerObj} id={"interval"} header={"interval"} time={interval}/>
+      <div className="boxCountiner" style={boxCountinerStyle}>
+       <Box handleTimerObj={this.handleTimerObj} timerName={this.props.timerName }  id={"prepare"}  header={"Get ready"} time={prepare}/>
+       <Box handleTimerObj={this.handleTimerObj} timerName={this.props.timerName }     id={"medation"} header={"medation"} time={medation}/>
+       <Box handleTimerObj={this.handleTimerObj} timerName={this.props.timerName } id={"interval"} header={"interval"} time={interval}/>
       </div>
     )
   }
 }
 const mapStateToProps = (state) => {
   return {
-    timers:state.timers      
+    timers:state.timers,
+    timerName:state.timerName    
 
 
   };

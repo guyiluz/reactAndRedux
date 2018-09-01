@@ -10,3 +10,11 @@ body{
 
 
 }
+
+
+
+@media(min-width:768px) {
+    .boxCountiner {
+      flex-flow: row nowrap!important;
+    }
+}

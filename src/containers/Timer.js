@@ -289,29 +289,44 @@ const testStyle={
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  height: "100%"
+  height: "100%",
+
 
 }
 
 const timerStyle={
     color: "#454545",
     fontSize: "12rem",
-    display: "flex"
+    display: "flex",
 
 
 }
 
 const NumberStyles={
-    alignSelf: "center"
+    alignSelf: "center",
+    "lineHeight":"0.5"
 
 }
 const imgStyles={
-    marginBottom: "-228px"
+
 
 
 }
 const imgStylesDown={
-  marginTop: "-275px"
+
+
+
+
+}
+
+
+const numberDivStyle ={
+
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+
 
 
 
@@ -323,13 +338,10 @@ const imgStylesDown={
  
 
 
-          <main  style={testStyle} className="main">
   
-<div style={{
-    display: "flex",
-    flexDirection: "column"
+<div
 
-}} >
+ >
 
 
 
@@ -348,21 +360,21 @@ const imgStylesDown={
 
  
  <div style={timerStyle}>
-<div onClickCapture={this.handeClickCapture}> 
-<img  id="mSmallNromlise" onClick={this.handelDown} onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp}  style={{paddingRight: "39px",transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+<div style={numberDivStyle} onClickCapture={this.handeClickCapture}> 
+<img  id="mSmallNromlise" onClick={this.handelDown} onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp}  style={{paddingRight: "70px",transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
 
-<div>{mBig}</div>
+<div style={NumberStyles}  >{mBig}</div>
 
-<img  id="mSmallNromliseLess"  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{ paddingLeft: "39px"  ,...imgStylesDown}} src={require('./path.svg')} />
+<img  id="mSmallNromliseLess"  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{ paddingLeft: "70px"  ,...imgStylesDown}} src={require('./path.svg')} />
 
 </div>
 <div style={NumberStyles} > {mSmall}</div>
 <div style={NumberStyles} > :</div>
-<div onClickCapture={this.handeClickCapture}> 
-<img   id ="sBigNromlise" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{paddingRight: "39px",transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+<div  style={numberDivStyle}  onClickCapture={this.handeClickCapture}> 
+<img   id ="sBigNromlise" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{paddingRight: "70px",transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
 
-<div>{sBig}</div>
-<img   id ="sBigNromliseLess" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{ paddingLeft: "39px"  ,...imgStylesDown}} src={require('./path.svg')} />
+<div style={NumberStyles} >{sBig}</div>
+<img   id ="sBigNromliseLess" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{ paddingLeft: "70px"  ,...imgStylesDown}} src={require('./path.svg')} />
 
 </div>
 <div style={NumberStyles}>{sSmall}</div>
@@ -374,7 +386,7 @@ const imgStylesDown={
 
 
   </div>
-          </main>
+       
     
     )
   }
