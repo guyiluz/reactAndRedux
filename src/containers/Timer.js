@@ -298,13 +298,15 @@ const timerStyle={
     color: "#454545",
     fontSize: "12rem",
     display: "flex",
+    
 
 
 }
 
 const NumberStyles={
     alignSelf: "center",
-    "lineHeight":"0.5"
+    "lineHeight":"0.5",
+    
 
 }
 const imgStyles={
@@ -361,23 +363,23 @@ const numberDivStyle ={
  
  <div style={timerStyle}>
 <div style={numberDivStyle} onClickCapture={this.handeClickCapture}> 
-<img  id="mSmallNromlise" onClick={this.handelDown} onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp}  style={{paddingRight: "70px",transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+<img  id="mSmallNromlise" onClick={this.handelDown} onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp}  style={{paddingLeft: "70px",...imgStyles}} src={require('./path.svg')} />
 
 <div style={NumberStyles}  >{mBig}</div>
 
-<img  id="mSmallNromliseLess"  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{ paddingLeft: "70px"  ,...imgStylesDown}} src={require('./path.svg')} />
+<img  id="mSmallNromliseLess"  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{ paddingRight: "70px",transform: "rotate(180deg)",  ...imgStylesDown}} src={require('./path.svg')} />
 
 </div>
 <div style={NumberStyles} > {mSmall}</div>
 <div style={NumberStyles} > :</div>
 <div  style={numberDivStyle}  onClickCapture={this.handeClickCapture}> 
-<img   id ="sBigNromlise" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{paddingRight: "70px",transform: "rotate(180deg)",...imgStyles}} src={require('./path.svg')} />
+<img   id ="sBigNromlise" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{paddingLeft: "70px",...imgStyles}} src={require('./path.svg')} />
 
 <div style={NumberStyles} >{sBig}</div>
-<img   id ="sBigNromliseLess" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{ paddingLeft: "70px"  ,...imgStylesDown}} src={require('./path.svg')} />
+<img    id ="sBigNromliseLess" onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handelDown} style={{ paddingRight: "70px"  ,transform: "rotate(180deg)", ...imgStylesDown}} src={require('./path.svg')} />
 
 </div>
-<div style={NumberStyles}>{sSmall}</div>
+<p style={NumberStyles}>{sSmall}</p>
 
   </div>
 

@@ -6,15 +6,23 @@
 // @import './semantic.min.css';
 
 body{
-    font-family: 'Source Sans Pro', sans-serif
-
+    font-family: 'Source Sans Pro', sans-serif;
 
 }
 
+.boxCon:hover{
+    box-shadow: 5px 12px 20px rgba(36,37,38,0.13);
+}
 
-
-@media(min-width:768px) {
-    .boxCountiner {
-      flex-flow: row nowrap!important;
+img {
+    &:hover {
+      -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));      
+      filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));  
+  
     }
-}
+  }
+
+  img{
+cursor: pointer;
+
+  }

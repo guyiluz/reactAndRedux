@@ -7,12 +7,10 @@ import React from 'react';
           
           "height": "74px",
           "width": "222px",
-          "backgroundColor": "#24b6f7",
-          "border": "1px solid #707070",
           "borderRadius": "9px",
-          "boxShadow": "0px 3px 6px 0px #000000",
           margin:10,
-          cursor:"pointer"
+          cursor:"pointer",
+          "backgroundImage":"linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)"
 
         
           
@@ -23,7 +21,7 @@ import React from 'react';
     fontFamily: "'Source Sans Pro'",
     fontSize: "23px",
     fontWeight: "600",
-    color:  timerName==id?"#454545": "#ebf1f2",
+    color:  timerName==id?"#454545": "#ffff",
     textAlign: "center",
     textTransform: "uppercase"
           
@@ -43,7 +41,7 @@ import React from 'react';
             
   
         return(
-  <button  id={id} onClick={handleTimerObj} style={BoxStyle} >
+  <div  className="boxCon" id={id} onClick={handleTimerObj} style={BoxStyle} >
   <header style={headerStyle}>
   {header}
   
@@ -52,7 +50,7 @@ import React from 'react';
     <p style={timeStyle}>{time}</p>
   </section>
   
-        </button>
+        </div>
   
   
         )
