@@ -295,7 +295,7 @@ const testStyle={
 }
 
 const timerStyle={
-    color: "#454545",
+    color: "rgb(182, 198, 222)",
     fontSize: "12rem",
     display: "flex",
     

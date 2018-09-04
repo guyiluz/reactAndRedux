@@ -7,13 +7,13 @@ import React from 'react';
           
           "height": "74px",
           "width": "222px",
-          "borderRadius": "9px",
+          "borderRadius": "28px",
           margin:10,
           cursor:"pointer",
-          "backgroundImage":"linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)"
+          "backgroundImage":"linear-gradient(to top, #d9afd9 0%, #97d9e1 100%)"
 
-        
-          
+   
+       
         }
   
    const   headerStyle={
@@ -21,7 +21,7 @@ import React from 'react';
     fontFamily: "'Source Sans Pro'",
     fontSize: "23px",
     fontWeight: "600",
-    color:  timerName==id?"#454545": "#ffff",
+    color:  timerName==id?"#ebf1f2": " #71A5B5",
     textAlign: "center",
     textTransform: "uppercase"
           
@@ -34,7 +34,7 @@ import React from 'react';
   
           "fontSize": "30px",
           "fontWeight": "600",
-          color:  timerName==id?"#454545": "#ebf1f2",
+          color:  timerName==id?"#ebf1f2": " #71A5B5",
           "textAlign": "center",
           "letterSpacing": "0.05em"
         }
