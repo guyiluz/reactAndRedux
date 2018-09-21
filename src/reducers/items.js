@@ -46,3 +46,32 @@ interval:"00:00"
 
 
 
+
+
+
+
+
+    
+
+
+
+    export function modes(state = "setting"
+    
+        
+    
+        
+        , action) {
+            
+            switch (action.type) {
+            
+                case "MODES":
+                
+                return  action.payload
+                       
+                 
+                   
+        
+                default:
+                    return state;
+            }
+        }

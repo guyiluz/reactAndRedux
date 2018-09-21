@@ -7,10 +7,12 @@ import React from 'react';
           
           "height": "74px",
           "width": "222px",
-          "borderRadius": "28px",
+          "borderRadius": "4em",
           margin:10,
           cursor:"pointer",
-          "backgroundImage":"linear-gradient(to top, #d9afd9 0%, #97d9e1 100%)"
+          "background-image": "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)",
+          "transition":"box-shadow 0.25s ease, transform 0.25s ease"
+      
 
    
        

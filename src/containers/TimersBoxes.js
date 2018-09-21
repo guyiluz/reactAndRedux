@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Box from "./Box"
 import {SET_TIMER_NAME} from "../actions/items"
 import {connect} from "react-redux";
+import { stat } from 'fs';
 class TimersBoxes extends Component {
   handleTimerObj=(e)=>{
     
@@ -21,7 +22,15 @@ class TimersBoxes extends Component {
     }
 const {interval,medation,prepare,timerName }=this.props.timers
 
-
+if(this.props.modes=="med"){
+  return (
+    <div className="boxCountiner" style={boxCountinerStyle}>
+     <Box   id={"stop"}  header={"Stop"} time={""}/>
+     <Box    id={"pause"}  header={"Pause"} time={""}/>
+    </div>
+  )
+  
+}
 
     return (
       <div className="boxCountiner" style={boxCountinerStyle}>
@@ -35,7 +44,8 @@ const {interval,medation,prepare,timerName }=this.props.timers
 const mapStateToProps = (state) => {
   return {
     timers:state.timers,
-    timerName:state.timerName    
+    timerName:state.timerName,
+    modes:state.modes    
 
 
   };
@@ -45,7 +55,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    SET_TIMER_NAME:(string)=>dispatch(SET_TIMER_NAME(string))
+    SET_TIMER_NAME:(string)=>dispatch(SET_TIMER_NAME(string)),
 
   };
 };

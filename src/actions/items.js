@@ -26,3 +26,19 @@
         }
     
    
+
+
+        export function SET_MODE(string){
+            return{
+                type:"MODES",
+                payload:string
+                
+            }
+
+        }
+    
+   
+
+
+
+        
