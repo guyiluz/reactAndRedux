@@ -44,7 +44,6 @@ cursor: pointer;
     height: 100%;
     grid-template-columns: 0.6fr 0.4fr;
     grid-template-rows: 40px 1fr;
-    grid-gap: 40px ;
     grid-template-areas: "navbar navbar"  "timer picMedtion";
   }
   
@@ -56,9 +55,10 @@ cursor: pointer;
     display: grid;
     grid-area: timer;
     grid-template-columns: 1fr;
-    grid-template-rows:  500px 100px;
+    grid-template-rows:  400px 100px;
     grid-gap: 1px 1px;
     grid-template-areas: "timrNumber" "timerBtn";
+    align-self: center;
   }
 
 
@@ -72,6 +72,7 @@ cursor: pointer;
 
   display: flex;
   justify-content: center;
+  align-items: center
   }
   .b { grid-area: b;
     background: gold;
@@ -85,5 +86,8 @@ cursor: pointer;
     align-items: center
   }
   
-  .picMedtion { grid-area: picMedtion; }
+  .picMedtion { grid-area: picMedtion;
+  align-self: center;
+  
+  }
   

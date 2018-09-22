@@ -94,7 +94,7 @@ const {modes}=this.props
 
 
 { 
-  modes=="setting" && <div  className="timer" > >
+  modes=="setting" && <div  className="timer" > 
     <div className="timrNumber">
     <Timer    />
     </div>
