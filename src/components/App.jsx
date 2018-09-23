@@ -103,14 +103,9 @@ const {modes}=this.props
      <TimersBoxes   />
 
      <div style={{marginTop:84}}>
-     <ParticleEffectButton
-        color='#cbb9db'
-        hidden={this.state.hidden}
-        onBegin={this.setMode}
-
-      >
-      <div className="btnStart" style={startBtnStyle}  onClick={this.hide}>Start</div>
-      </ParticleEffectButton>
+ 
+      
+      <div className="btnStart" style={startBtnStyle}  onClick={this.setMode}>Start</div>
      </div>
   
 

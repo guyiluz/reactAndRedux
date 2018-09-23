@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {SET_TIMER} from "../actions/items"
 
 
-class Timer extends Component {
+class CountDown extends Component {
   constructor(props){
   
     super(props)
@@ -19,7 +19,8 @@ class Timer extends Component {
    arrowBtn:"",
    counter:0,
    totalTime:0,
-   timerName:timerName
+   timerName:"",
+   status:""
 
   
    
@@ -27,6 +28,89 @@ class Timer extends Component {
 
 
     }
+  }
+
+
+
+  HandleStartTimer=()=>{
+
+    let millis=0
+
+    const millisToMinutesAndSeconds=( )=> {
+      if(millis!==0){  
+      millis=millis-1000
+      setTimeout(()=>{
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0);
+       let stringTime=  minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+ if(stringTime.length<5){
+  stringTime = "0"+stringTime
+
+ }
+
+
+
+       this.setState({
+        mBig:Number(stringTime[0]),
+        mSmall:Number(stringTime[1]),
+        sBig:Number(stringTime[3]),
+        sSmall:Number(stringTime[4])
+  
+
+
+
+      })
+  
+      millisToMinutesAndSeconds(millis) 
+     },1000)
+    }
+
+    }
+
+
+    let {mBig,mSmall,sBig,sSmall}=this.state
+  let  mBigNromlise=mBig!==0?mBig*10*60*1000:0
+  let  mSmallNromlise=mSmall!==0?mSmall*60*1000:0
+  let sBigNromlise=sBig!==0?sBig*10*1000:0
+  let sSmallNromlise=sSmall!==0?sSmall*1000:0
+
+  millis=  mBigNromlise+mSmallNromlise+sBigNromlise+sSmallNromlise
+  millisToMinutesAndSeconds(millis)
+console.log('millis :', millis);
+
+  }
+  
+
+
+
+
+  componentDidMount(){
+ const {timers}= this.props
+if(timers.prepare!=="00:00"){
+ this.setState({
+  mBig:parseInt(timers.prepare[0]) ,
+  mSmall:parseInt(timers.prepare[1]),
+  sBig:parseInt(timers.prepare[3]),
+  sSmall:parseInt(timers.prepare[4]),
+  status:"Get Ready"
+
+
+ },()=>{
+
+this.HandleStartTimer()
+
+ }
+ 
+ 
+ )
+
+
+}
+     
+
+
+
+
   }
 
   static getDerivedStateFromProps(nextProps,prevState){
@@ -145,55 +229,7 @@ console.log(stringTime);
 
 
 
-  HandleStartTimer=()=>{
-
-    let millis=0
-
-    const millisToMinutesAndSeconds=( )=> {
-      if(millis!==0){  
-      millis=millis-1000
-      setTimeout(()=>{
-        var minutes = Math.floor(millis / 60000);
-        var seconds = ((millis % 60000) / 1000).toFixed(0);
-       let stringTime=  minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
- if(stringTime.length<5){
-  stringTime = "0"+stringTime
-
- }
-
-
-
-       this.setState({
-        mBig:Number(stringTime[0]),
-        mSmall:Number(stringTime[1]),
-        sBig:Number(stringTime[3]),
-        sSmall:Number(stringTime[4])
-  
-
-
-
-      })
-  
-      millisToMinutesAndSeconds(millis) 
-     },1000)
-    }
-
-    }
-
-
-    let {mBig,mSmall,sBig,sSmall}=this.state
-  let  mBigNromlise=mBig!==0?mBig*10*60*1000:0
-  let  mSmallNromlise=mSmall!==0?mSmall*60*1000:0
-  let sBigNromlise=sBig!==0?sBig*10*1000:0
-  let sSmallNromlise=sSmall!==0?sSmall*1000:0
-
-  millis=  mBigNromlise+mSmallNromlise+sBigNromlise+sSmallNromlise
-  millisToMinutesAndSeconds(millis)
-console.log('millis :', millis);
-
-  }
-  
-
+ 
 
 
   
@@ -379,7 +415,10 @@ const numberDivStyle ={
 
   </div>
 
+<div>
+<p>{this.state.status}</p>
 
+</div>
 
 
 
@@ -406,12 +445,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     SET_TIMER:(obj)=>dispatch(SET_TIMER(obj))
+    
 
   };
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Timer);
+export default connect(mapStateToProps, mapDispatchToProps)(CountDown);
 
 
 

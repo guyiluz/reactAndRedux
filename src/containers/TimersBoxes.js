@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Box from "./Box"
-import {SET_TIMER_NAME} from "../actions/items"
+import {SET_TIMER_NAME,SET_MODE} from "../actions/items"
 import {connect} from "react-redux";
 import { stat } from 'fs';
 class TimersBoxes extends Component {
@@ -10,6 +10,14 @@ class TimersBoxes extends Component {
     
     this.props.SET_TIMER_NAME(timer)
     
+    }
+
+
+
+    handleStop=(e)=>{
+
+   this.props.SET_MODE("setting")
+
     }
 
 
@@ -25,8 +33,11 @@ const {interval,medation,prepare,timerName }=this.props.timers
 if(this.props.modes=="med"){
   return (
     <div className="boxCountiner" style={boxCountinerStyle}>
-     <Box   id={"stop"}  header={"Stop"} time={""}/>
-     <Box    id={"pause"}  header={"Pause"} time={""}/>
+    <div  onClick={this.handleStop}>   
+    <Box   id={"stop"}  time={"Stop"} />
+    </div>
+  
+     <Box    id={"pause"}  time={"Pause"} />
     </div>
   )
   
@@ -56,6 +67,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     SET_TIMER_NAME:(string)=>dispatch(SET_TIMER_NAME(string)),
+    SET_MODE:(strig)=>dispatch(SET_MODE(strig))
+
+    
 
   };
 };
