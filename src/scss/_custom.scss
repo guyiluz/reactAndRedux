@@ -56,7 +56,7 @@ cursor: pointer;
     grid-area: timer;
     grid-template-columns: 1fr;
     grid-template-rows:  400px 100px;
-    grid-gap: 100px 1px;
+    grid-gap: 1fr 1px;
     grid-template-areas: "timrNumber" "timerBtn";
     align-self: center;
   }

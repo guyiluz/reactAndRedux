@@ -33,35 +33,68 @@ class CountDown extends Component {
 
 
   HandleStartTimer=()=>{
+    const {timers}= this.props
+  const {status,totalTime}=this.state
+
+
 
     let millis=0
 
     const millisToMinutesAndSeconds=( )=> {
+      console.log("millis:",millis);
+
       if(millis!==0){  
       millis=millis-1000
       setTimeout(()=>{
         var minutes = Math.floor(millis / 60000);
         var seconds = ((millis % 60000) / 1000).toFixed(0);
        let stringTime=  minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+       let totalTime =minutes+seconds
  if(stringTime.length<5){
   stringTime = "0"+stringTime
 
  }
 
 
-
        this.setState({
         mBig:Number(stringTime[0]),
         mSmall:Number(stringTime[1]),
         sBig:Number(stringTime[3]),
-        sSmall:Number(stringTime[4])
+        sSmall:Number(stringTime[4]),
+        totalTime
   
 
 
 
       })
+console.log(this.state.status);
+       if(totalTime=="01"&&this.state.status==="Get Ready"){
+      
+      const {medation} =timers
+let obj ={
+  mBig:Number(medation[0]),
+  mSmall:Number(medation[1]),
+  sBig:Number(medation[3]),
+  sSmall:Number(medation[4]),
+}
+
+        let {mBig,mSmall,sBig,sSmall}=obj
+        let  mBigNromlise=mBig!==0?mBig*10*60*1000:0
+        let  mSmallNromlise=mSmall!==0?mSmall*60*1000:0
+        let sBigNromlise=sBig!==0?sBig*10*1000:0
+        let sSmallNromlise=sSmall!==0?sSmall*1000:0
+        millis=  mBigNromlise+mSmallNromlise+sBigNromlise+sSmallNromlise
+
+
+        this.setState({
+          status:"medation"
+         })
+}
+
   
       millisToMinutesAndSeconds(millis) 
+
+  
      },1000)
     }
 
@@ -76,7 +109,6 @@ class CountDown extends Component {
 
   millis=  mBigNromlise+mSmallNromlise+sBigNromlise+sSmallNromlise
   millisToMinutesAndSeconds(millis)
-console.log('millis :', millis);
 
   }
   
@@ -92,7 +124,8 @@ if(timers.prepare!=="00:00"){
   mSmall:parseInt(timers.prepare[1]),
   sBig:parseInt(timers.prepare[3]),
   sSmall:parseInt(timers.prepare[4]),
-  status:"Get Ready"
+  status:"Get Ready",
+  totalTime:timers.prepare
 
 
  },()=>{
@@ -114,8 +147,7 @@ this.HandleStartTimer()
   }
 
   static getDerivedStateFromProps(nextProps,prevState){
-    console.log("nextProps:",nextProps)
-    console.log("prevState:",prevState)
+    
  if(prevState.timerName!==nextProps.timerName&&prevState.timerName!==undefined){
 
   const timerName =nextProps.timerName
@@ -206,7 +238,6 @@ let   arrowBtn =this.state.arrowBtn
   obj[this.props.timerName]=stringTime
   this.props.SET_TIMER(obj)
     
-console.log(stringTime);
 
   if(arrowBtn!==""){
     this.setState({
@@ -245,7 +276,6 @@ handleClick=(e)=>{
 
      if(e.type=="mousedown"){
        
-     console.log("down");
       this.setState({
         arrowBtn:e.target.id,
         stop:true
@@ -262,7 +292,6 @@ handleClick=(e)=>{
    }
    
    else  {
-    console.log(e.type)
     this.setState({
       arrowBtn:e.target.id,
     evType:""
@@ -288,13 +317,11 @@ handelUp=()=>{
     clearInterval(this.state.intervalId)
   })
 
-  console.log("Up")
 
 }
 
 handeClickCapture=(e)=>{
   const {counter}=this.state
-  console.log("handeClickCapture");
   if(counter>1){
 e.stopPropagation()
 this.setState({counter:0})
