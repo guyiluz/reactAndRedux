@@ -20,7 +20,8 @@ class CountDown extends Component {
    counter:0,
    totalTime:0,
    timerName:"",
-   status:""
+   status:"",
+   intervalNum:""
 
   
    
@@ -32,9 +33,36 @@ class CountDown extends Component {
 
 
 
+  getMilisecFromString =(timeObj)=>{
+
+    let intervalObj ={
+      mBig:Number(timeObj[0]),
+      mSmall:Number(timeObj[1]),
+      sBig:Number(timeObj[3]),
+      sSmall:Number(timeObj[4]),
+    }
+
+
+
+
+   let millis =0
+    let {mBig,mSmall,sBig,sSmall}=intervalObj
+    let  mBigNromlise=mBig!==0?mBig*10*60*1000:0
+    let  mSmallNromlise=mSmall!==0?mSmall*60*1000:0
+    let sBigNromlise=sBig!==0?sBig*10*1000:0
+    let sSmallNromlise=sSmall!==0?sSmall*1000:0
+    millis=  mBigNromlise+mSmallNromlise+sBigNromlise+sSmallNromlise
+
+ return millis
+  }
+
+
   HandleStartTimer=()=>{
     const {timers}= this.props
   const {status,totalTime}=this.state
+
+  let interval=timers.interval;
+  let intervalNum=0;
 
 
 
@@ -67,30 +95,31 @@ class CountDown extends Component {
 
 
       })
-console.log(this.state.status);
        if(totalTime=="01"&&this.state.status==="Get Ready"){
-      
-      const {medation} =timers
-let obj ={
-  mBig:Number(medation[0]),
-  mSmall:Number(medation[1]),
-  sBig:Number(medation[3]),
-  sSmall:Number(medation[4]),
-}
 
-        let {mBig,mSmall,sBig,sSmall}=obj
-        let  mBigNromlise=mBig!==0?mBig*10*60*1000:0
-        let  mSmallNromlise=mSmall!==0?mSmall*60*1000:0
-        let sBigNromlise=sBig!==0?sBig*10*1000:0
-        let sSmallNromlise=sSmall!==0?sSmall*1000:0
-        millis=  mBigNromlise+mSmallNromlise+sBigNromlise+sSmallNromlise
+        if(timers.interval=="00:00"){
+          const {medation,interval} =timers
+                  millis=  this.getMilisecFromString(medation)
+          
+                  this.setState({
+                    status:"medation"
+                   })
 
 
-        this.setState({
-          status:"medation"
-         })
-}
+        }else{
+          const {medation,interval} =timers
+  let intervvalTime = this.getMilisecFromString(interval)
+  let medationTime= this.getMilisecFromString(medation)
+console.log(" this.getMilisecFromString(interval)", this.getMilisecFromString(interval))
+console.log(" this.getMilisecFromString(medation)", this.getMilisecFromString(medation))
 
+intervalNum = Math.round(medationTime/intervvalTime)
+this.setState({intervalNum})
+
+  
+
+        }
+        }
   
       millisToMinutesAndSeconds(millis) 
 
@@ -444,6 +473,7 @@ const numberDivStyle ={
 
 <div>
 <p>{this.state.status}</p>
+<p>{this.state.intervalNum}</p>
 
 </div>
 
