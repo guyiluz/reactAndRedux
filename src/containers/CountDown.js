@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import CheckboxGroup from '../../node_modules/antd/lib/checkbox/Group';
 import {connect} from "react-redux";
-import {SET_TIMER} from "../actions/items"
-
-const gong = require("./gong-burmese.wav")
+import {SET_TIMER} from "../actions/items";
+var audio = new Audio(require('./Meditation-bell-sound.mp3') );
 
 
 
@@ -103,7 +102,9 @@ class CountDown extends Component {
 
       })
        if(totalTime=="01"&&this.state.status==="Get Ready"&&this.state.status!=="medation"){
+        audio.pause()
 
+        audio.play();
         if(timers.interval=="00:00"){
           const {medation,interval} =timers
                   millis=  this.getMilisecFromString(medation)
@@ -128,10 +129,12 @@ millis =medationTime
 if(intervvalTime>0){
   intervalNum = Math.round(medationTime/intervvalTime)
   this.setState({intervalNum,intervalId:setInterval(()=>{
-    // audio.play()
+    audio.pause()
+
+    audio.play();
 
 
-
+ console.log("ITERVAL ON ")
   },intervvalTime)
 
 })
@@ -165,7 +168,12 @@ if(intervvalTime>0){
   
 
 
+componentWillUnmount(){
 
+clearInterval(this.state.intervalId)
+
+
+}
 
   componentDidMount(){
  const {timers}= this.props

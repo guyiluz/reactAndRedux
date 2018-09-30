@@ -72,7 +72,7 @@ const config = {
                 include: [path.join(__dirname, 'src'), /node_modules/]
             },
             {
-                test   : /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
+                test   : /\.(eot|woff|woff2|ttf|svg|png|jpg|gif|wav|mp3)$/,
                 loader : 'url-loader?limit=10000&name=[name]-[hash].[ext]',
                 include: [path.join(__dirname, 'src'), /node_modules/]
             },
