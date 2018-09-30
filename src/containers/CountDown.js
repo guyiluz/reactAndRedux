@@ -3,6 +3,9 @@ import CheckboxGroup from '../../node_modules/antd/lib/checkbox/Group';
 import {connect} from "react-redux";
 import {SET_TIMER} from "../actions/items"
 
+const gong = require("./gong-burmese.wav")
+
+
 
 class CountDown extends Component {
   constructor(props){
@@ -21,7 +24,9 @@ class CountDown extends Component {
    totalTime:0,
    timerName:"",
    status:"",
-   intervalNum:""
+   intervalNum:"",
+   intervalId:""
+
 
   
    
@@ -58,6 +63,8 @@ class CountDown extends Component {
 
 
   HandleStartTimer=()=>{
+
+    let intervvalTime;
     const {timers}= this.props
   const {status,totalTime}=this.state
 
@@ -95,7 +102,7 @@ class CountDown extends Component {
 
 
       })
-       if(totalTime=="01"&&this.state.status==="Get Ready"){
+       if(totalTime=="01"&&this.state.status==="Get Ready"&&this.state.status!=="medation"){
 
         if(timers.interval=="00:00"){
           const {medation,interval} =timers
@@ -106,22 +113,37 @@ class CountDown extends Component {
                    })
 
 
-        }else{
+        }else {
           const {medation,interval} =timers
-  let intervvalTime = this.getMilisecFromString(interval)
+   intervvalTime = this.getMilisecFromString(interval)
   let medationTime= this.getMilisecFromString(medation)
 console.log(" this.getMilisecFromString(interval)", this.getMilisecFromString(interval))
 console.log(" this.getMilisecFromString(medation)", this.getMilisecFromString(medation))
 
-intervalNum = Math.round(medationTime/intervvalTime)
-this.setState({intervalNum})
+this.setState({
+  status:"medation"
+ })
+millis =medationTime
 
-  
+if(intervvalTime>0){
+  intervalNum = Math.round(medationTime/intervvalTime)
+  this.setState({intervalNum,intervalId:setInterval(()=>{
+    // audio.play()
+
+
+
+  },intervvalTime)
+
+})
+}
 
         }
         }
   
       millisToMinutesAndSeconds(millis) 
+
+
+
 
   
      },1000)
@@ -175,114 +197,9 @@ this.HandleStartTimer()
 
   }
 
-  static getDerivedStateFromProps(nextProps,prevState){
-    
- if(prevState.timerName!==nextProps.timerName&&prevState.timerName!==undefined){
-
-  const timerName =nextProps.timerName
-    const time= nextProps.timers[timerName]
-
-return{
-
-   
-   mBig:parseInt(time[0]) ,
-   mSmall:parseInt(time[1]),
-   sBig:parseInt(time[3]),
-   sSmall:parseInt(time[4]),
-   isMouseUp:false,
-   arrowBtn:"",
-   counter:0,
-   totalTime:0,
-   timerName
-
-
-
-}
-
-
- }else{
-
-return null
-
- }
-
-
-   }
-
-
-
-   changeSec= ()=>{
-
-    
-
-
-    let {mBig,mSmall,sBig,sSmall,counter}=this.state
-    let  mBigNromlise=mBig!==0?mBig*10*60*1000:0
-    let  mSmallNromlise=mSmall!==0?mSmall*60*1000:0
-    let sBigNromlise=sBig!==0?sBig*10*1000:0
-    let sSmallNromlise=sSmall!==0?sSmall*1000:0;
-let   arrowBtn =this.state.arrowBtn
-    switch (arrowBtn) {
-      case "sBigNromlise":
-      sBigNromlise+=1000*10
-        break;
-    
-        case "mSmallNromlise":
-        mSmallNromlise+=60*1000
-          break;
-          case "sBigNromliseLess":
-
-          if(mBig+mSmall+sBig+sSmall!==0){
-            sBigNromlise-=1000*10
-          }
-          break;
-          case "mSmallNromliseLess":
-
-          if(mBig+mSmall+sBig+sSmall!==0){
-            mSmallNromlise-=60*1000
-          }
-     
-     
-            break;
-
-
-      default:
-        break;
-    }
-
-
-
-
-
-   let  millis=  mBigNromlise+mSmallNromlise+sBigNromlise+sSmallNromlise
-   var minutes = Math.floor(millis / 60000);
-   var seconds = ((millis % 60000) / 1000).toFixed(0);
-  let stringTime=  minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-  if(stringTime.length<5){
-  stringTime = "0"+stringTime
-
-  }
-  
-  const obj = this.props.timers
-  obj[this.props.timerName]=stringTime
-  this.props.SET_TIMER(obj)
-    
-
-  if(arrowBtn!==""){
-    this.setState({
-      mBig:Number(stringTime[0]),
-      mSmall:Number(stringTime[1]),
-      sBig:Number(stringTime[3]),
-      sSmall:Number(stringTime[4]),
-      counter:counter+=1,
-      totalTime:stringTime
-  
-    }) 
-  }
-  
-
  
-}
+
+
 
 
 
@@ -292,76 +209,7 @@ let   arrowBtn =this.state.arrowBtn
  
 
 
-  
-handleClick=(e)=>{
 
-
-
- }
-  
-  handelDown=(e)=>{
- 
- 
-
-     if(e.type=="mousedown"){
-       
-      this.setState({
-        arrowBtn:e.target.id,
-        stop:true
-     
-      } ,()=> {
-        const intervalTIme =this.state.intervalTIme
-  
-        let intervalId = setInterval(this.changeSec, 200)
-        this.setState({ intervalId: intervalId,evType:"mousedown"})
-    
-  
-   
-      })
-   }
-   
-   else  {
-    this.setState({
-      arrowBtn:e.target.id,
-    evType:""
-    } ,()=>this.changeSec()
-   )
-
-
-
-
-
-  
-  }
-
-
-    
-   }
-  
-
-handelUp=()=>{
-
-  clearInterval(this.state.intervalId)
-  this.setState({arrowBtn:"",evType:""},()=>{
-    clearInterval(this.state.intervalId)
-  })
-
-
-}
-
-handeClickCapture=(e)=>{
-  const {counter}=this.state
-  if(counter>1){
-e.stopPropagation()
-this.setState({counter:0})
-
-  }else{
-    this.setState({counter:0})
-  }
-}
-
-
-  
 
 
 
@@ -398,20 +246,10 @@ const timerStyle={
 const NumberStyles={
     alignSelf: "center",
     "lineHeight":"0.5",
-    
-
 }
-const imgStyles={
 
 
 
-}
-const imgStylesDown={
-
-  "transition":"box-shadow 0.25s ease, transform 2.25s ease"
-
-
-}
 
 
 const numberDivStyle ={
@@ -433,28 +271,12 @@ const numberDivStyle ={
 
 
   
-<div
-
- >
-
-
-
-
-
-
-
-
-{/*   
-<button onClick={this.HandleStartTimer}>CLick</button>
-<button  onMouseOut={this.handelUp} onMouseDown={this.handelDown}  onMouseUp={this.handelUp} onClick={this.handleClick}>up</button> */}
-
-
-
+<div>
 
 
  
  <div style={timerStyle}>
-<div style={numberDivStyle} onClickCapture={this.handeClickCapture}> 
+<div style={numberDivStyle} > 
 
 <div style={NumberStyles}  >{mBig}</div>
 
@@ -462,7 +284,7 @@ const numberDivStyle ={
 </div>
 <div style={NumberStyles} > {mSmall}</div>
 <div style={NumberStyles} > :</div>
-<div  style={numberDivStyle}  onClickCapture={this.handeClickCapture}> 
+<div  style={numberDivStyle}  > 
 
 <div style={NumberStyles} >{sBig}</div>
 
