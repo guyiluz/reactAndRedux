@@ -61,6 +61,29 @@ class CountDown extends Component {
   }
 
 
+
+  activeIntrevalBell=(intervvalTime,millis)=>{
+    console.log("activeIntrevalBell:",millis);
+
+  
+
+    this.setState({intervalId:setInterval(()=>{
+      audio.pause()
+  
+      audio.play();
+  
+     
+   console.log("ITERVAL ON ")
+    },intervvalTime)
+
+  
+  
+  })
+
+
+
+  } 
+
   HandleStartTimer=()=>{
 
     let intervvalTime;
@@ -75,7 +98,6 @@ class CountDown extends Component {
     let millis=0
 
     const millisToMinutesAndSeconds=( )=> {
-      console.log("millis:",millis);
 
       if(millis!==0){  
       millis=millis-1000
@@ -118,27 +140,24 @@ class CountDown extends Component {
           const {medation,interval} =timers
    intervvalTime = this.getMilisecFromString(interval)
   let medationTime= this.getMilisecFromString(medation)
-console.log(" this.getMilisecFromString(interval)", this.getMilisecFromString(interval))
-console.log(" this.getMilisecFromString(medation)", this.getMilisecFromString(medation))
+  millis =medationTime
 
-this.setState({
-  status:"medation"
- })
-millis =medationTime
+this.setState({status:"medation"})
+
+
+
 
 if(intervvalTime>0){
-  intervalNum = Math.round(medationTime/intervvalTime)
-  this.setState({intervalNum,intervalId:setInterval(()=>{
-    audio.pause()
+  
+  setTimeout(() => {
+    console.log("xxxxxxxxxxxxxxxx");
+  }, intervvalTime);
+  
+  this.activeIntrevalBell(intervvalTime,millis)
 
-    audio.play();
-
-
- console.log("ITERVAL ON ")
-  },intervvalTime)
-
-})
 }
+
+
 
         }
         }
@@ -150,6 +169,15 @@ if(intervvalTime>0){
 
   
      },1000)
+    }else{
+
+ 
+        console.log("time is ended");
+    clearInterval(this.state.intervalId)
+    
+    
+          
+      
     }
 
     }
