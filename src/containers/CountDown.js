@@ -54,6 +54,13 @@ class CountDown extends Component {
   }
 
 
+  bellRing=()=>{
+    audio.pause()
+    
+    audio.play();
+
+  }
+
 
 
 
@@ -77,20 +84,25 @@ class CountDown extends Component {
     const millisToMinutesAndSeconds = () => {
       const { status, totalTime } = this.state
       const { medation, interval } = timers
-console.log('object');
-console.log('intervvalTime :', intervvalTime);
-console.log('counter :', counter);
-if(intervvalTime!==counter&&status=="medation"){
+
+      if(status=="medation"){
+
+     console.log('intervvalTime :', intervvalTime);
+     console.log('counter :', counter);
+if(intervvalTime!==counter){
   counter =counter+1000
 
 
-}else {
+}else{
+  console.log("object");
   counter=0
+  this.bellRing()
+
   
 
 }
 
-
+}
       if (this.millis !== 0) {
         this.millis = this.millis - 1000
         setTimeout(() => {
@@ -119,7 +131,7 @@ if(intervvalTime!==counter&&status=="medation"){
 
 
           if (totalTime == "01" && this.state.status === "Get Ready" && this.state.status !== "medation") {
-            audio.play();
+       this.bellRing()
 
             if (timers.interval == "00:00") {
               const { medation, interval } = timers
@@ -131,12 +143,7 @@ if(intervvalTime!==counter&&status=="medation"){
 
 
             } else {
-              console.log(this.getMilisecFromString)
-          
-              console.log('intervvalTime :', intervvalTime);
-              console.log('intervvalTime :', medationTime);
-
-
+      
               this.setState({
                 status: "medation"
               })
